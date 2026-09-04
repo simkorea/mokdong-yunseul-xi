@@ -338,6 +338,52 @@ main{padding-top:var(--hdr)}
 .sched .now .d{color:var(--yunseul)}
 .sched .now .l{color:var(--mist)}
 
+/* 평면 탭 */
+.ptabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:clamp(18px,2.6vw,28px)}
+.ptab{padding:9px 14px;border:1px solid var(--line);font-size:.79rem;color:var(--txt-2);
+  transition:background-color .2s,color .2s,border-color .2s}
+.ptab:hover{border-color:var(--ink);color:var(--txt)}
+.ptab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--shell)}
+.ppanel{display:none}
+.ppanel.on{display:block}
+.pmeta{font-size:clamp(.8rem,1vw,.9rem);color:var(--txt-2);font-weight:300;margin-bottom:1.1em;
+  padding-bottom:.9em;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums lining-nums}
+.pmeta b{font-weight:500;color:var(--txt);font-size:1.08em}
+
+/* 영상 (지연 로딩 파사드 — 재생을 눌러야 YouTube 를 불러온다) */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(14px,2vw,24px)}
+.ytf{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink);cursor:pointer}
+.ytf img{width:100%;height:100%;object-fit:cover;opacity:.82;transition:opacity .25s,transform .35s}
+.ytf:hover img{opacity:1;transform:scale(1.02)}
+.ytf iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ytb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:58px;height:58px;border-radius:50%;background:rgba(20,24,29,.62);color:var(--shell);
+  font-size:1.1rem;line-height:58px;padding-left:4px;transition:background-color .22s}
+.ytf:hover .ytb{background:var(--yunseul);color:var(--ink)}
+.ytt{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;color:var(--shell);
+  font-size:.82rem;font-weight:300;background:linear-gradient(180deg,transparent,rgba(20,24,29,.86));
+  pointer-events:none}
+
+/* 외부 자료 링크 */
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(18px,2.4vw,28px)}
+.linkbtn{display:block;padding:14px 20px;border:1px solid var(--line);font-size:.86rem;color:var(--txt);
+  transition:background-color .22s,color .22s,border-color .22s}
+.linkbtn span{display:block;font-size:.7rem;color:var(--txt-2);font-weight:300;margin-top:.3em}
+.linkbtn:hover{background:var(--ink);border-color:var(--ink);color:var(--shell)}
+.linkbtn:hover span{color:var(--mist)}
+.linkbtn.dark{border-color:var(--line-d);color:var(--shell)}
+.linkbtn.dark span{color:var(--mist)}
+.linkbtn.dark:hover{background:var(--yunseul);border-color:var(--yunseul);color:var(--ink)}
+.linkbtn.dark:hover span{color:var(--slate)}
+
+/* 언론보도 */
+.press{list-style:none;max-width:940px;margin:0 auto}
+.press li{border-bottom:1px solid var(--line)}
+.press a{display:block;padding:clamp(16px,2.2vw,22px) 0;font-size:clamp(.88rem,1.08vw,.98rem);
+  color:var(--txt);font-weight:300;transition:color .2s}
+.press a span{display:block;font-size:.74rem;color:var(--txt-2);margin-top:.45em}
+.press a:hover{color:var(--yunseul-d)}
+
 /* 노트 */
 .note{font-size:.74rem;line-height:1.95;color:var(--txt-2);font-weight:300;margin-top:1.4em}
 .sec.dark .note{color:var(--mist)}
@@ -495,7 +541,26 @@ main{padding-top:var(--hdr)}
           목동윤슬자이의 포디움 외벽에는 바람과 빛에 반응하는 네드 칸(Ned Kahn)의 작품이 계획되어 있습니다.
           작가가 밝힌 디자인 모티프는 <strong style="font-weight:500;color:var(--txt)">한강의 연속적인 흐름과 주변 지형</strong>입니다.</p>
       </div>
-      <figure class="fig">
+      <div class="vgrid">
+        <div class="ytf" data-yt="9AiSjvCVKUA" data-t="목동윤슬자이 티저필름">
+          <img src="./images/mdx/yt-9AiSjvCVKUA.jpg" alt="목동윤슬자이 티저필름 미리보기" loading="lazy" width="1280" height="720">
+          <button type="button" class="ytb" aria-label="목동윤슬자이 티저필름 재생">&#9654;</button>
+          <span class="ytt">목동윤슬자이 티저필름</span>
+        </div>
+        <div class="ytf" data-yt="jjX3i3_mG_k" data-t="목동윤슬자이 x 네드 칸">
+          <img src="./images/mdx/yt-jjX3i3_mG_k.jpg" alt="목동윤슬자이 x 네드 칸 영상 미리보기" loading="lazy" width="1280" height="720">
+          <button type="button" class="ytb" aria-label="목동윤슬자이 x 네드 칸 영상 재생">&#9654;</button>
+          <span class="ytt">목동윤슬자이 &times; 네드 칸(Ned Kahn)</span>
+        </div>
+        <div class="ytf" data-yt="jwyRyVEuWrk" data-t="목동윤슬자이 x 콩코드 클럽 바이 조선">
+          <img src="./images/mdx/yt-jwyRyVEuWrk.jpg" alt="목동윤슬자이 x 콩코드 클럽 바이 조선 영상 미리보기" loading="lazy" width="1280" height="720">
+          <button type="button" class="ytb" aria-label="목동윤슬자이 x 콩코드 클럽 바이 조선 영상 재생">&#9654;</button>
+          <span class="ytt">목동윤슬자이 &times; 콩코드 클럽 바이 조선</span>
+        </div>
+      </div>
+      <p class="note" style="text-align:center">영상 출처 : GS건설 자이TV. 재생을 누르면 YouTube로 연결됩니다.</p>
+
+      <figure class="fig" style="margin-top:clamp(30px,4.4vw,58px)">
         <img src="./images/mdx/nedkahn-01.jpg" alt="네드 칸 소개와 목동윤슬자이 포디움 파사드 투시도 — 디자인 모티프는 한강의 연속적인 흐름" loading="lazy">
         <figcaption>※ 포디움 외벽에 적용되는 미술작품에는 조명설치를 위한 구조물이 돌출될 수 있습니다.
           ※ 상기 작품 이미지는 참고용으로, 작가 Ned Kahn의 과거 작업 일부를 보여줍니다.
@@ -638,10 +703,19 @@ main{padding-top:var(--hdr)}
           </table>
           <p class="note">모델하우스는 2026년 9월 3일(목) 그랜드 오픈했습니다.
             방문 상담은 사전 예약을 권해 드립니다.</p>
+          <div class="linkrow">
+            <a class="linkbtn" href="https://xi.co.kr/mdx/view?cmsMenuSeq=29754" target="_blank" rel="noopener noreferrer">
+              공영주차장 &amp; 셔틀버스 안내<span>GS건설 공식 · 새 창</span></a>
+          </div>
         </div>
         <figure class="fig">
           <img src="./images/mdx/directions-01.jpg" alt="목동윤슬자이 현장 및 모델하우스 위치 약도" loading="lazy">
         </figure>
+      </div>
+      <figure class="fig" style="margin-top:clamp(24px,3.4vw,40px)">
+        <img src="./images/mdx/parking-01.jpg" alt="목동윤슬자이 모델하우스 공영주차장 및 셔틀버스 운행 안내" loading="lazy">
+      </figure>
+      <div style="display:none">
       </div>
     </div>
   </section>
@@ -799,7 +873,112 @@ main{padding-top:var(--hdr)}
     </div>
   </section>
 
-  <section class="sec tint">
+  <section class="sec tint" id="plan">
+    <div class="wrap">
+      <div class="sec-hd">
+        <p class="eyebrow">Floor Plan</p>
+        <h2 class="sec-t">평면 안내</h2>
+        <p class="lede">11개 타입의 평면도입니다. 5군(203㎡AD · 202㎡BD · 198㎡CD)은 상·하부층으로 이어지는 복층형입니다.</p>
+      </div>
+      <div class="ptabs" role="tablist" aria-label="평면 타입 선택">
+        <button class="ptab" type="button" role="tab" id="pt-115a" aria-controls="pp-115a" aria-selected="true">115㎡A</button>
+        <button class="ptab" type="button" role="tab" id="pt-114b" aria-controls="pp-114b" aria-selected="false">114㎡B</button>
+        <button class="ptab" type="button" role="tab" id="pt-114c" aria-controls="pp-114c" aria-selected="false">114㎡C</button>
+        <button class="ptab" type="button" role="tab" id="pt-119at1" aria-controls="pp-119at1" aria-selected="false">119㎡A-T1</button>
+        <button class="ptab" type="button" role="tab" id="pt-120at2" aria-controls="pp-120at2" aria-selected="false">120㎡A-T2</button>
+        <button class="ptab" type="button" role="tab" id="pt-120at3" aria-controls="pp-120at3" aria-selected="false">120㎡A-T3</button>
+        <button class="ptab" type="button" role="tab" id="pt-117ct1" aria-controls="pp-117ct1" aria-selected="false">117㎡C-T1</button>
+        <button class="ptab" type="button" role="tab" id="pt-118ct2" aria-controls="pp-118ct2" aria-selected="false">118㎡C-T2</button>
+        <button class="ptab" type="button" role="tab" id="pt-203ad" aria-controls="pp-203ad" aria-selected="false">203㎡AD</button>
+        <button class="ptab" type="button" role="tab" id="pt-202bd" aria-controls="pp-202bd" aria-selected="false">202㎡BD</button>
+        <button class="ptab" type="button" role="tab" id="pt-198cd" aria-controls="pp-198cd" aria-selected="false">198㎡CD</button>
+      </div>
+      <div class="ppanel on" role="tabpanel" id="pp-115a" aria-labelledby="pt-115a">
+        <p class="pmeta"><b>115㎡A</b> · 1군 · 공급 118실 &nbsp;|&nbsp; 전용 115.8627㎡ · 공급 154.9639㎡ · 계약 241.7993㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-115a.jpg" alt="목동윤슬자이 115㎡A 평면도 — 전용 115.8627㎡, 공급 118실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-114b" aria-labelledby="pt-114b" hidden>
+        <p class="pmeta"><b>114㎡B</b> · 2군 · 공급 208실 &nbsp;|&nbsp; 전용 114.2462㎡ · 공급 151.3707㎡ · 계약 236.9947㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-114b.jpg" alt="목동윤슬자이 114㎡B 평면도 — 전용 114.2462㎡, 공급 208실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-114c" aria-labelledby="pt-114c" hidden>
+        <p class="pmeta"><b>114㎡C</b> · 3군 · 공급 118실 &nbsp;|&nbsp; 전용 114.2570㎡ · 공급 151.6296㎡ · 계약 237.2616㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-114c.jpg" alt="목동윤슬자이 114㎡C 평면도 — 전용 114.2570㎡, 공급 118실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-119at1" aria-labelledby="pt-119at1" hidden>
+        <p class="pmeta"><b>119㎡A-T1</b> · 4군 · 공급 45실 &nbsp;|&nbsp; 전용 119.6215㎡ · 공급 160.2750㎡ · 계약 249.9276㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-119a-t1.jpg" alt="목동윤슬자이 119㎡A-T1 평면도 — 전용 119.6215㎡, 공급 45실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-120at2" aria-labelledby="pt-120at2" hidden>
+        <p class="pmeta"><b>120㎡A-T2</b> · 4군 · 공급 30실 &nbsp;|&nbsp; 전용 120.2147㎡ · 공급 161.1796㎡ · 계약 251.2768㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-120a-t2.jpg" alt="목동윤슬자이 120㎡A-T2 평면도 — 전용 120.2147㎡, 공급 30실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-120at3" aria-labelledby="pt-120at3" hidden>
+        <p class="pmeta"><b>120㎡A-T3</b> · 4군 · 공급 15실 &nbsp;|&nbsp; 전용 120.2147㎡ · 공급 161.1796㎡ · 계약 251.2768㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-120a-t3.jpg" alt="목동윤슬자이 120㎡A-T3 평면도 — 전용 120.2147㎡, 공급 15실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-117ct1" aria-labelledby="pt-117ct1" hidden>
+        <p class="pmeta"><b>117㎡C-T1</b> · 4군 · 공급 45실 &nbsp;|&nbsp; 전용 117.8878㎡ · 공급 156.9349㎡ · 계약 245.2881㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-117c-t1.jpg" alt="목동윤슬자이 117㎡C-T1 평면도 — 전용 117.8878㎡, 공급 45실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-118ct2" aria-labelledby="pt-118ct2" hidden>
+        <p class="pmeta"><b>118㎡C-T2</b> · 4군 · 공급 45실 &nbsp;|&nbsp; 전용 118.6090㎡ · 공급 157.8453㎡ · 계약 246.7390㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-118c-t2.jpg" alt="목동윤슬자이 118㎡C-T2 평면도 — 전용 118.6090㎡, 공급 45실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-203ad" aria-labelledby="pt-203ad" hidden>
+        <p class="pmeta"><b>203㎡AD</b> · 5군 · 공급 10실 &nbsp;|&nbsp; 전용 203.3496㎡ · 공급 275.1720㎡ · 계약 427.5762㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-203ad.jpg" alt="목동윤슬자이 203㎡AD 평면도 — 전용 203.3496㎡, 공급 10실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-202bd" aria-labelledby="pt-202bd" hidden>
+        <p class="pmeta"><b>202㎡BD</b> · 5군 · 공급 9실 &nbsp;|&nbsp; 전용 202.3177㎡ · 공급 272.0561㎡ · 계약 423.6869㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-202bd.jpg" alt="목동윤슬자이 202㎡BD 평면도 — 전용 202.3177㎡, 공급 9실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <div class="ppanel" role="tabpanel" id="pp-198cd" aria-labelledby="pt-198cd" hidden>
+        <p class="pmeta"><b>198㎡CD</b> · 5군 · 공급 8실 &nbsp;|&nbsp; 전용 198.0675㎡ · 공급 267.5586㎡ · 계약 416.0040㎡</p>
+        <figure class="fig">
+          <img src="./images/mdx/plan-198cd.jpg" alt="목동윤슬자이 198㎡CD 평면도 — 전용 198.0675㎡, 공급 8실"
+               loading="lazy" width="1100" height="1500">
+        </figure>
+      </div>
+      <p class="note">※ 단위실 평면상 표기는 승강식 피난구이며, 짝수층 홀수층에 따라 위치가 교차되어 시공됩니다.
+        ※ 단위실 내 적용되는 마감자재(석재류, 타일류, 상판류, 시트류, 바닥재 등)는 자재 특성상 색상, 무늬 및 패턴 등이
+        균질하지 않을 수 있으며, 본 공사 시 마감재의 배열(나누기)은 변경될 수 있습니다.
+        ※ 무상선택 품목은 타입별로 다르며, 선택 시 일부 품목이 제공되지 않을 수 있습니다.
+        ※ 평면은 반드시 모델하우스에서 직접 확인하시기 바랍니다.</p>
+    </div>
+  </section>
+
+  <section class="sec">
     <div class="wrap">
       <div class="sec-hd"><p class="eyebrow">Unit Map</p><h2 class="sec-t">동·호수 배치도</h2></div>
       <figure class="fig">
@@ -810,12 +989,17 @@ main{padding-top:var(--hdr)}
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec tint">
     <div class="wrap">
       <div class="sec-hd"><p class="eyebrow">Included</p><h2 class="sec-t">기본제공품목</h2></div>
-      <div class="grid2">
-        <figure class="fig"><img src="./images/mdx/items-01.jpg" alt="목동윤슬자이 기본제공품목 안내 1" loading="lazy"></figure>
-        <figure class="fig"><img src="./images/mdx/items-02.jpg" alt="목동윤슬자이 기본제공품목 안내 2" loading="lazy"></figure>
+      <figure class="fig" style="max-width:820px;margin:0 auto">
+        <img src="./images/mdx/items-01.jpg" alt="목동윤슬자이 기본제공품목 안내" loading="lazy">
+      </figure>
+      <div class="linkrow">
+        <a class="linkbtn" href="https://xi.co.kr/mdx/view?cmsMenuSeq=29762" target="_blank" rel="noopener noreferrer">
+          E-모델하우스 둘러보기<span>GS건설 공식 · 새 창</span></a>
+        <a class="linkbtn" href="https://xi.co.kr/mdx/view?cmsMenuSeq=29753" target="_blank" rel="noopener noreferrer">
+          항공 VR 보기<span>GS건설 공식 · 새 창</span></a>
       </div>
     </div>
   </section>
@@ -890,6 +1074,41 @@ main{padding-top:var(--hdr)}
         <figcaption>※ 청약 자격·일정·서류 등 정확한 사항은 반드시 입주자모집공고문과
           한국부동산원 청약Home을 확인하시기 바랍니다.</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section class="sec dark on-dark">
+    <div class="wrap">
+      <div class="sec-hd"><p class="eyebrow">Official Notice</p><h2 class="sec-t">입주자 모집공고문</h2>
+        <p class="lede">청약 자격·일정·공급 물량 등 모든 확정 사항의 기준입니다. 청약 전 반드시 확인해 주세요.</p></div>
+      <div class="linkrow">
+        <a class="linkbtn dark" href="https://xi.co.kr/mdx/view?cmsMenuSeq=29766" target="_blank" rel="noopener noreferrer">
+          모집공고문 (축약)<span>GS건설 공식 · 새 창</span></a>
+        <a class="linkbtn dark" href="https://xi.co.kr/mdx/view?cmsMenuSeq=29767" target="_blank" rel="noopener noreferrer">
+          모집공고문 (전문)<span>GS건설 공식 · 새 창</span></a>
+        <a class="linkbtn dark" href="https://www.applyhome.co.kr" target="_blank" rel="noopener noreferrer">
+          한국부동산원 청약Home<span>청약 접수 · 새 창</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-hd"><p class="eyebrow">Press</p><h2 class="sec-t">언론보도</h2></div>
+      <ul class="press">
+        <li><a href="https://n.news.naver.com/mnews/article/029/0003046166?sid=101" target="_blank" rel="noopener noreferrer">
+          성시경이 들려주는 유니트 설명… ‘셀럽 오디오 도슨트’, ‘목동윤슬자이’ 견본주택에 도입
+          <span>디지털타임스 · 2026.09.04</span></a></li>
+        <li><a href="https://www.hankookilbo.com/news/article/A2026090210430001900?did=NA" target="_blank" rel="noopener noreferrer">
+          조선호텔앤리조트, 목동윤슬자이 웰니스 시설 운영
+          <span>한국일보 · 2026.09.02</span></a></li>
+        <li><a href="https://www.fnnews.com/news/202609021057585552" target="_blank" rel="noopener noreferrer">
+          ‘목동윤슬자이’, 프리미엄 웰니스 ‘콩코드 클럽’ 품는다
+          <span>파이낸셜뉴스 · 2026.09.02</span></a></li>
+        <li><a href="https://magazine.hankyung.com/money/article/202609029063c" target="_blank" rel="noopener noreferrer">
+          조선호텔앤리조트, ‘목동윤슬자이’ 웰니스 시설 위탁운영
+          <span>한경머니 · 2026.09.02</span></a></li>
+      </ul>
     </div>
   </section>
 
@@ -1131,6 +1350,43 @@ try{
       if(e.key==='ArrowRight') n=tabs[(i+1)%tabs.length];
       if(e.key==='ArrowLeft')  n=tabs[(i-1+tabs.length)%tabs.length];
       if(n){ e.preventDefault(); n.focus(); pick(n); }
+    });
+  });
+
+  /* ── 평면 타입 탭 ── */
+  var pt=Array.prototype.slice.call(document.querySelectorAll('.ptab'));
+  function ppick(t){
+    pt.forEach(function(x){
+      var on=(x===t);
+      x.setAttribute('aria-selected', on?'true':'false');
+      var p=$(x.getAttribute('aria-controls'));
+      if(!p) return;
+      p.classList.toggle('on', on);
+      if(on) p.removeAttribute('hidden'); else p.setAttribute('hidden','');
+    });
+  }
+  pt.forEach(function(t,i){
+    t.addEventListener('click', function(){ ppick(t); });
+    t.addEventListener('keydown', function(e){
+      var x=null;
+      if(e.key==='ArrowRight') x=pt[(i+1)%pt.length];
+      if(e.key==='ArrowLeft')  x=pt[(i-1+pt.length)%pt.length];
+      if(x){ e.preventDefault(); x.focus(); ppick(x); }
+    });
+  });
+
+  /* ── 영상 : 눌렀을 때만 YouTube 를 불러온다 (초기 로딩 절약) ── */
+  document.querySelectorAll('.ytf').forEach(function(f){
+    function play(){
+      var id=f.getAttribute('data-yt'); if(!id) return;
+      f.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+
+        '?autoplay=1&rel=0" title="'+(f.getAttribute('data-t')||'영상')+
+        '" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    }
+    f.addEventListener('click', play);
+    var btn=f.querySelector('.ytb');
+    if(btn) btn.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); play(); }
     });
   });
 

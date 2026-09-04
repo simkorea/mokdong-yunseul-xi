@@ -427,6 +427,11 @@ main{padding-top:var(--hdr)}
   .spec th{width:104px}
   .hero-meta{gap:14px 24px}
 }
+@media (max-width:640px){
+  /* 하단 고정바에 전화·등록이 이미 있다. 헤더에서 중복을 걷어내 한 줄로 만든다. */
+  .hdr-r{display:none}
+  .brand{font-size:.95rem;letter-spacing:.1em;white-space:nowrap}
+}
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important}
   .field::before{animation:none;opacity:.28}

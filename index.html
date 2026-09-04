@@ -134,6 +134,9 @@
 }
 </script>
 
+<!-- 토스애즈 픽셀 (전환 추적) — async/defer 금지: 이벤트 코드보다 먼저 로드돼야 한다 -->
+<script type="text/javascript" charset="UTF-8" src="https://static.toss.im/lex/v1.js"></script>
+
 <style>
 /* ══════════════════════════════════════════════════════════
    목동윤슬자이
@@ -1461,6 +1464,28 @@ try{
         body:JSON.stringify({name:name, phone:phone, unit_type:unit||null, message:body||null})
       });
       if(!res.ok) throw new Error('HTTP '+res.status);
+
+      /* ── 토스애즈 전환 전송 (LEAD_COLLECTION) ──
+         저장이 성공한 이 지점에서만 발송한다. 픽셀이 없거나 오류가 나도
+         아래 완료 화면 전환은 그대로 진행된다. */
+      try{
+        var _evId=(window.crypto&&crypto.randomUUID)
+          ? crypto.randomUUID()
+          : 'LEAD-'+Date.now()+'-'+Math.random().toString(36).slice(2,10);
+        if(typeof TossPixel==='function'){
+          TossPixel('2382883081870412525').lead({
+            event_id:_evId,
+            lead_type:'Consultation',
+            custom_param1:'목동윤슬자이'
+          });
+          console.log('[TossPixel] lead 전송: event_id='+_evId);  /* 테스트 확인용 — 연동 확인 후 제거 가능 */
+        }else{
+          console.warn('[TossPixel] SDK 미로드 — 전환 미전송');
+        }
+      }catch(_pxErr){
+        console.warn('[TossPixel] 전환 전송 실패:',_pxErr);
+      }
+
       $('fwrap').style.display='none';
       $('done').classList.add('on');
     }catch(ex){

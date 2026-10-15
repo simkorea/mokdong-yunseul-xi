@@ -82,7 +82,7 @@ module.exports = async (req, res) => {
             </table>
             <p style="margin-top:20px;color:#98A0AC;font-size:12px;">
               목동윤슬자이 분양 안내 ·
-              <a href="https://sangdong-lotte.vercel.app" style="color:#8A6D2F;">홈페이지 바로가기</a>
+              <a href="https://mokdong-yunseul-xi.vercel.app" style="color:#8A6D2F;">홈페이지 바로가기</a>
             </p>
           </div>
         `
